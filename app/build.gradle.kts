@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -55,7 +56,9 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.dataStore)
     implementation(libs.androidx.dataStore.preferences)
+    implementation(libs.androidx.paging.common)
     implementation(libs.timber)
+    implementation(libs.gson)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit)
