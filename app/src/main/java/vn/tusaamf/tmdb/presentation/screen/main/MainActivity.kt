@@ -1,6 +1,7 @@
 package vn.tusaamf.tmdb.presentation.screen.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -32,17 +33,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dagger.hilt.android.HiltAndroidApp
 import vn.tusaamf.tmdb.R
-import vn.tusaamf.tmdb.KtTMDBApp
+import vn.tusaamf.tmdb.TmdbApp
 import vn.tusaamf.tmdb.presentation.ui.theme.TMDBTheme
 
+@HiltAndroidApp
 class MainActivity : ComponentActivity() {
+
+    lateinit var application: TmdbApp
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("TUNT", "MainActivity");
         enableEdgeToEdge()
         setContent {
-            TMDBTheme {
-                KtTMDBApp()
+            TMDBTheme(darkTheme = application.isDark.value) {
+                TmdbApp()
             }
         }
     }

@@ -2,5 +2,5 @@ package vn.tusaamf.tmdb.common
 
 import kotlinx.serialization.Serializable
 
-class Route {
-}
+@Serializable
+open class Route(val deeplinkConstant: String? = null)
