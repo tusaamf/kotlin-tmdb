@@ -1,1 +1,2 @@
 - Bạn đang dùng cách làm cũ. Hãy cân nhắc chuyển sang sử dụng Splash Screen API mới của Android 12+.
+- composable<Dashboard> cách dùng

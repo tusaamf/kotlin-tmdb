@@ -33,14 +33,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.AndroidEntryPoint
 import vn.tusaamf.tmdb.R
 import vn.tusaamf.tmdb.TmdbApp
 import vn.tusaamf.tmdb.presentation.ui.theme.TMDBTheme
+import javax.inject.Inject
 
-@HiltAndroidApp
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @Inject
     lateinit var application: TmdbApp
 
     override fun onCreate(savedInstanceState: Bundle?) {

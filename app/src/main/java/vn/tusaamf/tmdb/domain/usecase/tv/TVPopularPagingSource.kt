@@ -2,28 +2,28 @@ package vn.tusaamf.tmdb.domain.usecase.tv
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import vn.tusaamf.tmdb.data.model.dto.TVDto
-import vn.tusaamf.tmdb.data.model.dto.extension.toTVDtoList
+import vn.tusaamf.tmdb.data.model.dto.TvDTO
+import vn.tusaamf.tmdb.data.model.dto.extension.toTvDTOList
 import vn.tusaamf.tmdb.domain.repository.MediaRepository
 import java.io.IOException
 
 class TVPopularPagingSource(
     internal val repository: MediaRepository
-) : PagingSource<Int, TVDto>() {
-    override fun getRefreshKey(state: PagingState<Int, TVDto>): Int? {
+) : PagingSource<Int, TvDTO>() {
+    override fun getRefreshKey(state: PagingState<Int, TvDTO>): Int? {
         return state.anchorPosition?.let { anchorPositon ->
             val anchorPage = state.closestPageToPosition(anchorPosition = anchorPositon)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TVDto> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TvDTO> {
         val page = params.key ?: 1
         return try {
             val response = repository.tvPopular(page = page)
 
             val tvSeriesList = if (response.isSuccessful) {
-                response.body()?.results.orEmpty().toTVDtoList()
+                response.body()?.results.orEmpty().toTvDTOList()
             } else {
                 emptyList()
             }
