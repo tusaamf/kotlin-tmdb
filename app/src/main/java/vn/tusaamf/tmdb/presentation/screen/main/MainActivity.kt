@@ -1,4 +1,4 @@
-package vn.tusaamf.tmdb
+package vn.tusaamf.tmdb.presentation.screen.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -32,7 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import vn.tusaamf.tmdb.ui.theme.TMDBTheme
+import vn.tusaamf.tmdb.R
+import vn.tusaamf.tmdb.KtTMDBApp
+import vn.tusaamf.tmdb.presentation.ui.theme.TMDBTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +42,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TMDBTheme {
-                TMDBApp()
+                KtTMDBApp()
             }
         }
     }
